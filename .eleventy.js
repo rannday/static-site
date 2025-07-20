@@ -47,7 +47,7 @@ export default function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "static/_headers": "_headers" });
   eleventyConfig.addPassthroughCopy({ "static/robots.txt": "robots.txt" });
   eleventyConfig.addPassthroughCopy({ "static/images/favicon.ico": "favicon.ico" });
-  eleventyConfig.addPassthroughCopy({ "static/worker.js": "worker.js" });
+  //eleventyConfig.addPassthroughCopy({ "static/worker.js": "worker.js" });
 
   return {
     dir: {
