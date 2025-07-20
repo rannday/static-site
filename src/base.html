@@ -45,6 +45,12 @@
       outline: 2px solid light-dark(var(--accent-dark), var(--accent-light));
       outline-offset: 2px;
     }
+    a[target="_blank"] svg {
+      width: 0.9em;
+      height: 0.9em;
+      vertical-align: text-bottom;
+      stroke-width: 2;
+    }
     h1, h2, h3, h4, h5, h6 {
       font-weight: 600;
       line-height: 1.2;
@@ -145,6 +151,7 @@ if ('serviceWorker' in navigator && location.hostname !== 'localhost') {
   console.warn('[SW] Not supported in this browser.');
 }
 </script>
+<script type="module" src="/js/links.js"></script>
 {% if highlightjs %}<script type="module" src="/js/highlight.js"></script>{% endif %}
 </body>
 </html>
