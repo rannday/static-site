@@ -1,5 +1,8 @@
 import hljs from 'highlight.js/lib/core';
 import dos from 'highlight.js/lib/languages/dos';
+import { createElement } from 'lucide';
+import Copy from 'lucide/dist/esm/icons/copy.js';
+import Check from 'lucide/dist/esm/icons/check.js';
 
 hljs.registerLanguage('dos', dos);
 hljs.highlightAll();
@@ -15,28 +18,33 @@ document.querySelectorAll('pre > code').forEach(codeBlock => {
   button.style.right = '0.5em';
   button.style.padding = '0.25em';
   button.style.cursor = 'pointer';
+  button.style.color = 'white';
   button.style.background = 'none';
   button.style.border = 'none';
 
-  const icon = document.createElement('img');
-  icon.src = '/icons/content_copy.svg';
-  icon.alt = 'Copy';
-  icon.style.width = '1rem';
-  icon.style.height = '1rem';
+  let icon = createElement(Copy);
+  icon.setAttribute('width', '16');
+  icon.setAttribute('height', '16');
 
   button.appendChild(icon);
 
   button.addEventListener('click', () => {
     navigator.clipboard.writeText(codeBlock.innerText).then(() => {
-      icon.src = '/icons/done_outline.svg';
-      icon.alt = 'Copied!';
+      const newIcon = createElement(Check);
+      newIcon.setAttribute('width', '16');
+      newIcon.setAttribute('height', '16');
+      button.replaceChild(newIcon, icon);
+      icon = newIcon;
+
       setTimeout(() => {
-        icon.src = '/icons/content_copy.svg';
-        icon.alt = 'Copy';
+        const resetIcon = createElement(Copy);
+        resetIcon.setAttribute('width', '16');
+        resetIcon.setAttribute('height', '16');
+        button.replaceChild(resetIcon, icon);
+        icon = resetIcon;
       }, 1500);
     });
   });
 
   pre.appendChild(button);
 });
-
