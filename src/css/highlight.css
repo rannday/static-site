@@ -1,0 +1,13 @@
+@import "highlight.js/styles/github-dark-dimmed.css";
+
+pre {
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+pre > code {
+  display: block;
+  white-space: pre;
+  box-sizing: border-box;
+}

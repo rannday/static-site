@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} | rannday.com</title>
+  <link rel="stylesheet" href="/css/fonts.css">
+  <link rel="stylesheet" href="/css/main.css">
+{% if highlightjs %}
+  <link rel="stylesheet" href="/css/highlight.css">
+{% endif %}
+  <meta name="description" content="My study notes website">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="{{ title }} | rannday.com">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ og_url }}">
+  <link rel="icon" href="/images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<div id="grid">
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/networking">Networking</a></li>
+      <li><a href="/juniper">Juniper</a></li>
+      <li><a href="/paloalto">Palo Alto</a></li>
+      <li><a href="/projects">Projects</a></li>
+    </ul>
+  </nav>
+  <header>
+    <h1>{{ title }}</h1>
+    <hr>
+  </header>
+  <main>
+    {{ content }}
+
+  </main>
+  <footer>
+    <hr>
+    <p>Public domain. No rights reserved.
+      <a href="https://unlicense.org" target="_blank" rel="noopener noreferrer">Unlicense</a> |
+      <a href="/about.html">About</a>
+    </p>
+  </footer>
+</div>
+{% if highlightjs %}
+<script type="module" src="/js/hljs-init.js"></script>
+{% endif %}
+</body>
+</html>

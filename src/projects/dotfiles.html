@@ -1,0 +1,69 @@
+---
+title: Dotfiles
+layout: base.html
+permalink: /projects/dotfiles.html
+og_url: https://www.rannday.com/projects/dotfiles.html
+highlightjs: true
+---
+
+<h2>Some of my dotfiles scripts</h2>
+<section>
+  <h3>Windows Update Batch Script</h3>
+  <pre><code class="language-dos">
+@echo off
+
+:: Ensure script runs from its own directory
+pushd "%CD%"
+CD /D "%~dp0"
+
+REM Rust
+echo.
+echo Updating Rust...
+rustup self update
+rustup update
+
+REM Go
+echo.
+echo Updating Go...
+winget upgrade --id GoLang.Go --accept-package-agreements --accept-source-agreements --silent
+
+REM Clink
+echo.
+echo Updating Clink...
+clink update
+
+:: Auto-elevate if not admin
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+if '%errorlevel%' NEQ '0' (
+    echo Requesting administrative privileges...
+    echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/c ""%~s0""", "", "runas", 1 >> "%temp%\getadmin.vbs"
+    "%temp%\getadmin.vbs"
+    del "%temp%\getadmin.vbs"
+    exit /b
+)
+
+echo.
+echo ====================================
+echo     Starting Full System Update
+echo ====================================
+echo.
+
+REM Windows updates
+echo Installing Windows Updates...
+powershell -NoProfile -ExecutionPolicy Bypass -Command "Install-PackageProvider ^
+-Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope CurrentUser; Set-PSRepository ^
+-Name 'PSGallery' -InstallationPolicy Trusted; Install-Module -Name PSWindowsUpdate ^
+-Force -Scope CurrentUser; Import-Module PSWindowsUpdate; Get-WindowsUpdate -AcceptAll ^
+-Install -IgnoreReboot"
+
+REM (Optional) Microsoft Store Updates
+REM powershell -NoProfile -ExecutionPolicy Bypass -Command "Start-Process 'ms-windows-store://downloadsandupdates'"
+
+echo.
+echo ====================================
+echo     All Updates Completed!
+echo ====================================
+pause
+
+  </code></pre>
+</section>
