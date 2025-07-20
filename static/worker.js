@@ -1,6 +1,6 @@
 /// <reference lib="webworker" />
 
-const CACHE_NAME = 'worker-cache-v1';
+const CACHE_NAME = 'worker-cache-v2';
 const CACHE_TIMEOUT_SECONDS = 30 * 24 * 60 * 60; // 30 days
 const MAX_CACHE_ITEMS = 50;
 const UNSUPPORTED_SCHEMES = [
@@ -14,6 +14,7 @@ const UNSUPPORTED_SCHEMES = [
 const PRECACHE_ASSETS = [
   '/css/highlight.css',
   '/js/highlight.js',
+  '/js/links.js',
 ];
 
 /**

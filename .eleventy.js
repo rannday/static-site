@@ -53,7 +53,7 @@ export default function(eleventyConfig) {
     dir: {
       input: "src",
       output: "public",
-      includes: "."
+      includes: "templates"
     },
     templateFormats: ["html"]
   };
