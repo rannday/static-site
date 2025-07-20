@@ -129,6 +129,22 @@
     </p>
   </footer>
 </div>
+<script>
+if ('serviceWorker' in navigator && location.hostname !== 'localhost') {
+  navigator.serviceWorker
+    .register('/worker.js')
+    .then((registration) => {
+      console.log('[SW] Registered with scope:', registration.scope);
+    })
+    .catch((error) => {
+      console.error('[SW] Registration failed:', error);
+    });
+} else if (location.hostname === 'localhost') {
+  console.log('[SW] Skipped registration on localhost.');
+} else {
+  console.warn('[SW] Not supported in this browser.');
+}
+</script>
 {% if highlightjs %}<script type="module" src="/js/highlight.js"></script>{% endif %}
 </body>
 </html>
