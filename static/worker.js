@@ -141,13 +141,23 @@ async function handleAssetFetch(event) {
     const url = new URL(event.request.url);
     const normalizedUrl = url.origin + url.pathname;
 
-    const requestToMatch = new Request(normalizedUrl, {
-      method: event.request.method,
-      headers: event.request.headers,
-      mode: event.request.mode,
-      credentials: event.request.credentials,
-      redirect: event.request.redirect,
-    });
+    let requestToMatch;
+    if (event.request.mode === 'navigate') {
+      // Navigation requests (like `/`) can’t be re-constructed like this
+      requestToMatch = event.request;
+    } else {
+      // Normalize for other asset types (remove query string)
+      const normalizedUrl = new URL(event.request.url);
+      normalizedUrl.search = '';
+
+      requestToMatch = new Request(normalizedUrl.href, {
+        method: event.request.method,
+        headers: event.request.headers,
+        mode: event.request.mode,
+        credentials: event.request.credentials,
+        redirect: event.request.redirect,
+      });
+    }
 
     const cachedResponse = await cache.match(requestToMatch);
 
