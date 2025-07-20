@@ -40,7 +40,9 @@ export default function(eleventyConfig) {
     });
   }
 
-  eleventyConfig.addPassthroughCopy({ "static": "." });
+  //eleventyConfig.addPassthroughCopy({ "static": "." });
+  eleventyConfig.addPassthroughCopy({ "static/robots.txt": "robots.txt" });
+  eleventyConfig.addPassthroughCopy({ "static/images/favicon.ico": "favicon.ico" });
 
   return {
     dir: {

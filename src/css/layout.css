@@ -1,6 +1,5 @@
 html, body {
   height: 100%;
-  margin: 0;
 }
 
 #grid {
@@ -12,11 +11,6 @@ html, body {
     "nav main"
     "nav footer";
   min-height: 100vh;
-}
-
-header, main, footer {
-  grid-area: inherit;
-  padding: var(--space-md);
 }
 
 nav {

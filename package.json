@@ -14,6 +14,7 @@
   "author": "Rann Day",
   "type": "module",
   "scripts": {
+    "clean": "del-cli public --force",
     "css": "esbuild src/css/main.css --bundle --outfile=public/css/main.css --minify --loader:.woff2=file && esbuild src/css/highlight.css --bundle --outfile=public/css/highlight.css --minify",
     "css:watch:main": "esbuild src/css/main.css --bundle --outfile=public/css/main.css --watch --loader:.woff2=file",
     "css:watch:hljs": "esbuild src/css/highlight.css --bundle --outfile=public/css/highlight.css --watch",
@@ -23,21 +24,19 @@
     "js:watch": "npm-run-all --parallel js:watch:hljs",
     "serve": "eleventy --serve",
     "dev": "npm-run-all --parallel css:watch js:watch serve",
-    "build": "npm run css && npm run js && cross-env ELEVENTY_ENV=production eleventy",
+    "build": "npm run clean && npm run css && npm run js && cross-env ELEVENTY_ENV=production eleventy",
     "deploy": "npm run build && wrangler pages deploy public --project-name=rannday"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "cross-env": "^7.0.3",
+    "del-cli": "^6.0.0",
     "esbuild": "^0.25.8",
     "html-minifier-next": "^1.1.4",
     "npm-run-all": "^4.1.5",
     "wrangler": "^4.25.0"
   },
   "dependencies": {
-    "@fontsource-variable/roboto": "^5.2.6",
-    "@fontsource-variable/roboto-mono": "^5.2.6",
-    "@fontsource-variable/roboto-serif": "^5.2.6",
     "highlight.js": "^11.11.1",
     "lucide": "^0.525.0"
   }
