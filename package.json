@@ -15,14 +15,14 @@
   "type": "module",
   "scripts": {
     "clean": "del-cli public --force",
-    "css": "esbuild src/css/main.css --bundle --outfile=public/css/main.css --minify --loader:.woff2=file && esbuild src/css/highlight.css --bundle --outfile=public/css/highlight.css --minify",
-    "css:watch:main": "esbuild src/css/main.css --bundle --outfile=public/css/main.css --watch --loader:.woff2=file",
+    "css": "esbuild src/css/highlight.css --bundle --outfile=public/css/highlight.css --minify",
     "css:watch:hljs": "esbuild src/css/highlight.css --bundle --outfile=public/css/highlight.css --watch",
-    "css:watch": "npm-run-all --parallel css:watch:main css:watch:hljs",
+    "css:watch": "npm-run-all --parallel css:watch:hljs",
     "js": "esbuild src/js/hljs-init.js --bundle --outfile=public/js/hljs-init.js --minify",
     "js:watch:hljs": "esbuild src/js/hljs-init.js --bundle --outfile=public/js/hljs-init.js --watch",
     "js:watch": "npm-run-all --parallel js:watch:hljs",
     "serve": "eleventy --serve",
+    "test": "npx serve public -l 8080",
     "dev": "npm-run-all --parallel css:watch js:watch serve",
     "build": "npm run clean && npm run css && npm run js && cross-env ELEVENTY_ENV=production eleventy",
     "deploy": "npm run build && wrangler pages deploy public --project-name=rannday"
@@ -34,6 +34,7 @@
     "esbuild": "^0.25.8",
     "html-minifier-next": "^1.1.4",
     "npm-run-all": "^4.1.5",
+    "the-new-css-reset": "^1.11.3",
     "wrangler": "^4.25.0"
   },
   "dependencies": {

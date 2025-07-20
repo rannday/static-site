@@ -1,27 +1,108 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#f0f4f8" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
   <title>{{ title }} | rannday.com</title>
   <link rel="icon" href="/favicon.ico">
   <style>
-    .no-js body > * {
-      display: none;
+    /* Style */
+    :root {
+      font-size: 16px;
+      color-scheme: light dark;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      --font-serif: Georgia, "Times New Roman", Times, serif;
+      --font-mono: Menlo, Consolas, "Liberation Mono", SFMono-Regular, monospace;
+      --light: #efefec;
+      --dark: #333b3c;
+      --accent-light: #60a5fa;
+      --accent-dark: #3b82f6;
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 2rem;
+      --space-xl: 4rem;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: light-dark(var(--dark), var(--light));
+      background-color: light-dark(var(--light), var(--dark));
+      line-height: 1.5;
+    }
+    a {
+      color: light-dark(var(--accent-dark), var(--accent-light));
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+    a:focus-visible {
+      outline: 2px solid light-dark(var(--accent-dark), var(--accent-light));
+      outline-offset: 2px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      line-height: 1.2;
+      margin-top: var(--space-md);
+      margin-bottom: var(--space-sm);
+    }
+    p {
+      margin-bottom: var(--space-md);
+      max-width: 65ch;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: var(--space-sm) var(--space-md);
+      gap: var(--space-md);
+    }
+    nav a {
+      font-size: 1.125rem;
+      font-weight: 500;
+      padding: var(--space-xs) var(--space-sm);
+      display: block;
+    }
+    /* Layout */
+    html, body {
+      height: 100%;
+    }
+    #grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;  /* nav | everything else */
+      grid-template-rows: auto 1fr auto; /* header | main | footer */
+      grid-template-areas:
+        "nav header"
+        "nav main"
+        "nav footer";
+      min-height: 100vh;
+    }
+    nav {
+      grid-area: nav;
+      padding: var(--space-lg);
+    }
+    header {
+      grid-area: header;
+      padding: var(--space-sm);
+    }
+    main {
+      grid-area: main;
+      padding: var(--space-md);
+    }
+    footer {
+      grid-area: footer;
+      align-items: center;
+      padding: var(--space-sm);
+      font-size: 0.9rem;
     }
   </style>
-  <link rel="preload" href="/css/main.css" as="style" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/css/main.css"></noscript>
 {% if highlightjs %}  <link rel="preload" href="/css/highlight.css" as="style" onload="this.rel='stylesheet'">{% endif %}
 </head>
 <body>
-<noscript>
-  <p style="color: red; text-align: center; padding: 2em;">
-    This site requires JavaScript to be enabled for syntax highlighting and other features to work properly.
-  </p>
-</noscript>
 <div id="grid">
   <nav>
     <ul>
@@ -48,7 +129,6 @@
     </p>
   </footer>
 </div>
-<script>document.documentElement.classList.remove('no-js');</script>
 {% if highlightjs %}<script type="module" src="/js/hljs-init.js"></script>{% endif %}
 </body>
 </html>

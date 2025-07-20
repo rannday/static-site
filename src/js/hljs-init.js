@@ -22,6 +22,9 @@ document.querySelectorAll('pre > code').forEach(codeBlock => {
   button.style.background = 'none';
   button.style.border = 'none';
 
+  button.title = 'Copy code';
+  button.setAttribute('aria-label', 'Copy code');
+
   let icon = createElement(Copy);
   icon.setAttribute('width', '16');
   icon.setAttribute('height', '16');

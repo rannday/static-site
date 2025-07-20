@@ -13,6 +13,7 @@ Cloudflare pages site
 
 ## Styling
 - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout  
+- https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark
 - https://realfavicongenerator.net/  
 - https://highlightjs.org/ 
 - https://lucide.dev/

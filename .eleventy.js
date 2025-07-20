@@ -5,6 +5,11 @@ import { minify } from 'html-minifier-next';
 export default function(eleventyConfig) {
   const isProduction = process.env.ELEVENTY_ENV === "production";
 
+  eleventyConfig.addShortcode("resetCSS", () => {
+    const cssPath = path.resolve("node_modules/the-new-css-reset/css/reset.css");
+    return `<style>\n${fs.readFileSync(cssPath, "utf8")}\n</style>`;
+  });
+  
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready(err, browserSync) {
