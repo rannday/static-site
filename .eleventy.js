@@ -23,8 +23,6 @@ export default function(eleventyConfig) {
     }
   });
 
-  console.log("Eleventy production mode:", isProduction);
-
   if (isProduction) {
     
     eleventyConfig.addTransform("htmlmin", async function(content, outputPath) {
