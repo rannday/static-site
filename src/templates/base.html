@@ -26,7 +26,6 @@
       --space-lg: 2rem;
       --space-xl: 4rem;
     }
-
     body {
       font-family: var(--font-sans);
       color: light-dark(var(--dark), var(--light));
@@ -103,6 +102,26 @@
       color: light-dark(var(--accent-dark), var(--accent-light));
       font-weight: normal;
     }
+    hr {
+      height: 1px;
+      border: none;
+      background-repeat: no-repeat;
+      background-size: 100% 1px;
+      margin: var(--space-md) 0;
+    }
+
+    @media (prefers-color-scheme: light) {
+      hr {
+        background-image: linear-gradient(to right, #444, transparent);
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      hr {
+        background-image: linear-gradient(to right, #bbb, transparent);
+      }
+    }
+
     /* Layout */
     html, body {
       height: 100%;
