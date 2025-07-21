@@ -1,4 +1,4 @@
 import { renderIcon } from './lib/icon.js';
-import construction from 'lucide/dist/esm/icons/construction.js';
+import { construction } from 'lucide';
 
-renderIcon(construction, 'construction-icon');
+renderIcon(construction(), 'construction-icon');

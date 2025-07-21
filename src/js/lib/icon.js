@@ -1,4 +1,9 @@
-import { createElement, defaultAttributes } from 'lucide';
+import { createElement } from 'lucide';
+
+export const defaultAttributes = {
+  xmlns: 'http://www.w3.org/2000/svg',
+  viewBox: '0 0 24 24',
+};
 
 export function renderIcon(iconDef, targetId) {
   const svg = createSvg(iconDef);
