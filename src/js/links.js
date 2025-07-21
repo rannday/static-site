@@ -1,10 +1,9 @@
-import { createElement } from 'lucide';
-import { default as ExternalLinkIcon } from 'lucide/dist/esm/icons/external-link.js';
+import { renderIcon } from './lib/icon.js';
+import externalLink from 'lucide/dist/esm/icons/external-link.js';
 
-// Add external link icons to all links that open in a new tab
 document.querySelectorAll('a[target="_blank"]').forEach(link => {
-  const icon = createElement(ExternalLinkIcon);
-  icon.setAttribute('aria-hidden', 'true');
-  icon.style.marginLeft = '0.25em';
-  link.appendChild(icon);
+  const svg = renderIcon(externalLink); // returns the SVG element
+  svg.setAttribute('aria-hidden', 'true');
+  svg.style.marginLeft = '0.25em';
+  link.appendChild(svg);
 });
