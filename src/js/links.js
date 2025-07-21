@@ -1,6 +1,7 @@
 import { createElement } from 'lucide';
 import { default as ExternalLinkIcon } from 'lucide/dist/esm/icons/external-link.js';
 
+// Add external link icons to all links that open in a new tab
 document.querySelectorAll('a[target="_blank"]').forEach(link => {
   const icon = createElement(ExternalLinkIcon);
   icon.setAttribute('aria-hidden', 'true');

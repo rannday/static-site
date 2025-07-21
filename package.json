@@ -15,9 +15,10 @@
   "type": "module",
   "scripts": {
     "clean": "del-cli public --force",
-    "css": "esbuild src/css/highlight.css --bundle --outfile=public/css/highlight.css --minify",
-    "css:watch:hljs": "esbuild src/css/highlight.css --bundle --outfile=public/css/highlight.css --watch",
-    "css:watch": "npm-run-all --parallel css:watch:hljs",
+    "css": "esbuild src/css/highlight-light.css --bundle --outfile=public/css/highlight-light.css --minify && esbuild src/css/highlight-dark.css --bundle --outfile=public/css/highlight-dark.css --minify",
+    "css:watch:light": "esbuild src/css/highlight-light.css --bundle --outfile=public/css/highlight-light.css --watch",
+    "css:watch:dark": "esbuild src/css/highlight-dark.css --bundle --outfile=public/css/highlight-dark.css --watch",
+    "css:watch": "npm-run-all --parallel css:watch:light css:watch:dark",
     "js": "esbuild src/js/links.js --bundle --outfile=public/js/links.js --minify && esbuild src/js/highlight.js --bundle --outfile=public/js/highlight.js --minify",
     "js:watch:links": "esbuild src/js/links.js --bundle --outfile=public/js/links.js --watch",
     "js:watch:hljs": "esbuild src/js/highlight.js --bundle --outfile=public/js/highlight.js --watch",
