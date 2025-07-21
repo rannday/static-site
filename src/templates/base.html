@@ -61,6 +61,7 @@
       margin-bottom: var(--space-md);
       max-width: 65ch;
     }
+    /*
     nav ul {
       list-style: none;
       margin: 0;
@@ -73,6 +74,40 @@
       padding: var(--space-xs) var(--space-sm);
       display: block;
     }
+    */
+    nav {
+      grid-area: nav;
+      padding: var(--space-lg);
+      display: flex;
+      align-items: flex-start;    /* align menu to top */
+      justify-content: flex-end;  /* align menu to right */
+    }
+
+    nav ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;      /* right-align text */
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      gap: 1rem;
+      text-align: right;
+    }
+
+    nav ul li {
+      position: relative;
+      width: 100%;
+    }
+
+    nav ul li.is-active a::after {
+      content: '|';
+      display: inline-block;
+      margin-left: 0.25ch;
+      color: light-dark(var(--accent-dark), var(--accent-light));
+      font-weight: normal;
+      /* No blinking animation */
+    }
+
     /* Layout */
     html, body {
       height: 100%;
@@ -173,6 +208,30 @@ if ('serviceWorker' in navigator && location.hostname !== 'localhost') {
 }
 </script>
 -->
+<script>
+// Navigation active state
+const toggleActive = (e) => {
+  if (!e.target.matches('nav a')) return;
+  e.preventDefault();
+  document.querySelectorAll('nav ul li').forEach(item =>
+    item.classList.remove('is-active')
+  );
+  const activeItem = e.target.closest('li');
+  activeItem.classList.add('is-active');
+};
+document.querySelector('nav').addEventListener('click', toggleActive);
+window.addEventListener('DOMContentLoaded', () => {
+  const links = document.querySelectorAll('nav a');
+  const currentPath = window.location.pathname.replace(/\/+$/, '');
+  for (const link of links) {
+    const linkPath = link.pathname.replace(/\/+$/, '');
+    if (linkPath === currentPath) {
+      link.closest('li').classList.add('is-active');
+      break;
+    }
+  }
+});
+</script>
 <script type="module" src="/js/links.js"></script>
 {% if highlightjs %}<script type="module" src="/js/highlight.js"></script>{% endif %}
 </body>
