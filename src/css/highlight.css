@@ -1,0 +1,38 @@
+pre {
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+pre > code {
+  display: block;
+  white-space: pre;
+  box-sizing: border-box;
+}
+
+.copy-button {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  padding: var(--space-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  color: light-dark(var(--dark), var(--light));
+  background: none;
+  border: none;
+  z-index: 1;
+}
+
+.copy-button:hover,
+.copy-button:focus {
+  color: light-dark(var(--accent-dark), var(--accent-light));
+}
+
+.copy-button svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  stroke: currentColor;
+  display: block;
+}

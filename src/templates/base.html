@@ -8,170 +8,15 @@
   <meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
   <title>{{ title }} | rannday.com</title>
   <link rel="icon" href="/favicon.ico">
-  <style>
-    /* Style */
-    :root {
-      font-size: 16px;
-      color-scheme: light dark;
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      --font-serif: Georgia, "Times New Roman", Times, serif;
-      --font-mono: Menlo, Consolas, "Liberation Mono", SFMono-Regular, monospace;
-      --light: #efefec;
-      --dark: #333b3c;
-      --accent-light: #60a5fa;
-      --accent-dark: #3b82f6;
-      --space-xs: 0.25rem;
-      --space-sm: 0.5rem;
-      --space-md: 1rem;
-      --space-lg: 2rem;
-      --space-xl: 4rem;
-    }
-    body {
-      font-family: var(--font-sans);
-      color: light-dark(var(--dark), var(--light));
-      background-color: light-dark(var(--light), var(--dark));
-      line-height: 1.5;
-    }
-    a {
-      color: light-dark(var(--accent-dark), var(--accent-light));
-      text-decoration: none;
-    }
-    a:hover,
-    a:focus {
-      text-decoration: underline;
-    }
-    a:focus-visible {
-      outline: 2px solid light-dark(var(--accent-dark), var(--accent-light));
-      outline-offset: 2px;
-    }
-    a[target="_blank"] svg {
-      width: 0.9em;
-      height: 0.9em;
-      vertical-align: -0.125em;
-      stroke-width: 2;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 600;
-      line-height: 1.2;
-      margin-top: var(--space-md);
-      margin-bottom: var(--space-sm);
-    }
-    p {
-      margin-bottom: var(--space-md);
-      max-width: 65ch;
-    }
-    /*
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: var(--space-sm) var(--space-md);
-      gap: var(--space-md);
-    }
-    nav a {
-      font-size: 1.125rem;
-      font-weight: 500;
-      padding: var(--space-xs) var(--space-sm);
-      display: block;
-    }
-    */
-    nav {
-      grid-area: nav;
-      padding: var(--space-lg);
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-end;
-    }
-    nav ul {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      gap: 1rem;
-      text-align: right;
-    }
-    nav ul li {
-      position: relative;
-      width: 100%;
-    }
-    nav ul li.is-active a::after {
-      content: '|';
-      display: inline-block;
-      margin-left: 0.25ch;
-      color: light-dark(var(--accent-dark), var(--accent-light));
-      font-weight: normal;
-    }
-    hr {
-      height: 1px;
-      border: none;
-      background-repeat: no-repeat;
-      background-size: 100% 1px;
-      margin: var(--space-md) 0;
-    }
-
-    @media (prefers-color-scheme: light) {
-      hr {
-        background-image: linear-gradient(to right, #444, transparent);
-      }
-    }
-
-    @media (prefers-color-scheme: dark) {
-      hr {
-        background-image: linear-gradient(to right, #bbb, transparent);
-      }
-    }
-
-    /* Layout */
-    html, body {
-      height: 100%;
-    }
-    #grid {
-      display: grid;
-      grid-template-columns: 200px 1fr;  /* nav | everything else */
-      grid-template-rows: auto 1fr auto; /* header | main | footer */
-      grid-template-areas:
-        "nav header"
-        "nav main"
-        "nav footer";
-      min-height: 100vh;
-    }
-    nav {
-      grid-area: nav;
-      padding: var(--space-lg);
-    }
-    header {
-      grid-area: header;
-      padding: var(--space-sm);
-    }
-    main {
-      grid-area: main;
-      padding: var(--space-md);
-    }
-    footer {
-      grid-area: footer;
-      align-items: center;
-      padding: var(--space-sm);
-      font-size: 0.9rem;
-    }
-    /* Code */
-    pre {
-      overflow-x: auto;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    pre > code {
-      display: block;
-      white-space: pre;
-      box-sizing: border-box;
-    }
-  </style>
-{% if highlightjs %}  
+  {% include "css.html" %}
+{% if highlightjs %}
+  <link rel="stylesheet" href="/css/highlight.css">
   <link rel="stylesheet" href="/css/highlight-light.css" media="(prefers-color-scheme: light)">
   <link rel="stylesheet" href="/css/highlight-dark.css" media="(prefers-color-scheme: dark)">
 {% endif %}
 </head>
 <body>
+{% include "icons.svg" %}
 <div id="grid">
   <nav>
     <ul>
@@ -193,35 +38,11 @@
   <footer>
     <hr>
     <p>Public domain. No rights reserved.
-      <a href="https://unlicense.org" target="_blank" rel="noopener noreferrer">Unlicense</a> |
+      {% ext_link "https://unlicense.org" %}Unlicense{% endext_link %} |
       <a href="/about.html">About</a>
     </p>
   </footer>
 </div>
-<!-- Worker causing issues on Cloudflare Pages
-static/_headers:
-
-/worker.js
-  Cache-Control: no-cache
-  Service-Worker-Allowed: /
-
-<script>
-if ('serviceWorker' in navigator && location.hostname !== 'localhost') {
-  navigator.serviceWorker
-    .register('/worker.js')
-    .then((registration) => {
-      console.log('[SW] Registered with scope:', registration.scope);
-    })
-    .catch((error) => {
-      console.error('[SW] Registration failed:', error);
-    });
-} else if (location.hostname === 'localhost') {
-  console.log('[SW] Skipped registration on localhost.');
-} else {
-  console.warn('[SW] Not supported in this browser.');
-}
-</script>
--->
 <script>
 // Highlight active nav item on page load
 window.addEventListener('DOMContentLoaded', () => {

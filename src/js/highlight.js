@@ -1,8 +1,5 @@
 import hljs from 'highlight.js/lib/core';
 import dos from 'highlight.js/lib/languages/dos';
-import { createElement } from 'lucide';
-import Copy from 'lucide/dist/esm/icons/copy.js';
-import Check from 'lucide/dist/esm/icons/check.js';
 
 hljs.registerLanguage('dos', dos);
 hljs.highlightAll();
@@ -13,38 +10,20 @@ document.querySelectorAll('pre > code').forEach(codeBlock => {
 
   const button = document.createElement('button');
   button.className = 'copy-button';
-  button.style.position = 'absolute';
-  button.style.top = '0.5em';
-  button.style.right = '0.5em';
-  button.style.padding = '0.25em';
-  button.style.cursor = 'pointer';
-  button.style.color = 'white';
-  button.style.background = 'none';
-  button.style.border = 'none';
-
   button.title = 'Copy code';
   button.setAttribute('aria-label', 'Copy code');
 
-  let icon = createElement(Copy);
-  icon.setAttribute('width', '16');
-  icon.setAttribute('height', '16');
-
+  const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-copy');
+  icon.appendChild(use);
   button.appendChild(icon);
 
   button.addEventListener('click', () => {
     navigator.clipboard.writeText(codeBlock.innerText).then(() => {
-      const newIcon = createElement(Check);
-      newIcon.setAttribute('width', '16');
-      newIcon.setAttribute('height', '16');
-      button.replaceChild(newIcon, icon);
-      icon = newIcon;
-
+      use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-check');
       setTimeout(() => {
-        const resetIcon = createElement(Copy);
-        resetIcon.setAttribute('width', '16');
-        resetIcon.setAttribute('height', '16');
-        button.replaceChild(resetIcon, icon);
-        icon = resetIcon;
+        use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-copy');
       }, 1500);
     });
   });

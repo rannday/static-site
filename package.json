@@ -15,28 +15,28 @@
   "type": "module",
   "scripts": {
     "clean": "del-cli public --force",
-    "css": "esbuild src/css/highlight-light.css src/css/highlight-dark.css --bundle --outdir=public/css --minify",
-    "css:watch": "esbuild src/css/highlight-light.css src/css/highlight-dark.css --bundle --outdir=public/css --watch",
-    "js": "esbuild src/js/construction.js src/js/links.js src/js/highlight.js --bundle --outdir=public/js --minify",
-    "js:watch": "esbuild src/js/construction.js src/js/links.js src/js/highlight.js --bundle --outdir=public/js --minify --watch",
+    "css": "node scripts/build-css.js",
+    "css:watch": "node scripts/build-css.js --watch",
+    "js": "node scripts/build-js.js",
+    "js:watch": "node scripts/build-js.js --watch",
     "serve": "eleventy --serve",
     "test": "npx serve public -l 8080",
-    "dev": "npm-run-all --parallel css:watch js:watch serve",
+    "dev": "concurrently -n CSS,JS,SERVE -c yellow,cyan,magenta \"npm:css:watch\" \"npm:js:watch\" \"npm:serve\"",
     "build": "npm run clean && npm run css && npm run js && cross-env ELEVENTY_ENV=production eleventy",
     "deploy": "npm run build && wrangler pages deploy public --project-name=rannday"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
+    "concurrently": "^9.2.0",
     "cross-env": "^7.0.3",
     "del-cli": "^6.0.0",
     "esbuild": "^0.25.8",
     "html-minifier-next": "^1.1.4",
-    "npm-run-all": "^4.1.5",
+    "lucide-static": "^0.525.0",
     "the-new-css-reset": "^1.11.3",
     "wrangler": "^4.25.0"
   },
   "dependencies": {
-    "highlight.js": "^11.11.1",
-    "lucide": "^0.525.0"
+    "highlight.js": "^11.11.1"
   }
 }
