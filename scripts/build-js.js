@@ -3,7 +3,10 @@ import esbuild from 'esbuild';
 const isWatching = process.argv.includes('--watch');
 
 const ctx = await esbuild.context({
-  entryPoints: ['src/js/highlight.js'],
+  entryPoints: [
+    'src/js/search.js',
+    'src/js/highlight.js'
+  ],
   bundle: true,
   outdir: 'public/js',
   minify: !isWatching,

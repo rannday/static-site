@@ -2,10 +2,6 @@
   "name": "static-site",
   "version": "0.0.1",
   "description": "Cloudflare static site",
-  "homepage": "https://rannday.github.io/static-site/",
-  "bugs": {
-    "url": "https://github.com/rannday/static-site/issues"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/rannday/static-site.git"
@@ -20,7 +16,7 @@
     "js": "node scripts/build-js.js",
     "js:watch": "node scripts/build-js.js --watch",
     "serve": "eleventy --serve",
-    "test": "npx serve public -l 8080",
+    "test": "npx http-server public -p 8080",
     "dev": "concurrently --kill-others-on-fail --raw -n CSS,JS,SERVE -c yellow,cyan,magenta \"npm:css:watch\" \"npm:js:watch\" \"npm:serve\"",
     "build": "npm run clean && npm run css && npm run js && cross-env ELEVENTY_ENV=production eleventy",
     "deploy": "npm run build && wrangler pages deploy public --project-name=rannday"
@@ -31,11 +27,14 @@
     "cross-env": "^7.0.3",
     "del-cli": "^6.0.0",
     "esbuild": "^0.25.8",
+    "gray-matter": "^4.0.3",
     "html-minifier-next": "^1.1.4",
+    "http-server": "^14.1.1",
     "lucide-static": "^0.525.0",
     "wrangler": "^4.25.0"
   },
   "dependencies": {
-    "highlight.js": "^11.11.1"
+    "highlight.js": "^11.11.1",
+    "lunr": "^2.3.9"
   }
 }
