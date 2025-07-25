@@ -18,7 +18,7 @@ if (searchForm && searchInput) {
 if (window.location.pathname.startsWith("/search")) {
   const params = new URLSearchParams(window.location.search);
   const query = params.get("q");
-  console.log("Query param:", query);
+  /*console.log("Query param:", query);*/
   const resultsContainer = document.getElementById("search-results");
 
   if (resultsContainer && query && query.length > 1) {
