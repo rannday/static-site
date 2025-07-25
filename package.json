@@ -21,7 +21,7 @@
     "js:watch": "node scripts/build-js.js --watch",
     "serve": "eleventy --serve",
     "test": "npx serve public -l 8080",
-    "dev": "concurrently -n CSS,JS,SERVE -c yellow,cyan,magenta \"npm:css:watch\" \"npm:js:watch\" \"npm:serve\"",
+    "dev": "concurrently --kill-others-on-fail --raw -n CSS,JS,SERVE -c yellow,cyan,magenta \"npm:css:watch\" \"npm:js:watch\" \"npm:serve\"",
     "build": "npm run clean && npm run css && npm run js && cross-env ELEVENTY_ENV=production eleventy",
     "deploy": "npm run build && wrangler pages deploy public --project-name=rannday"
   },
