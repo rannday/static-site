@@ -11,25 +11,19 @@
   "type": "module",
   "scripts": {
     "clean": "del-cli public --force",
-    "css": "node scripts/build-css.js",
-    "css:watch": "node scripts/build-css.js --watch",
-    "js": "node scripts/build-js.js",
-    "js:watch": "node scripts/build-js.js --watch",
     "serve": "eleventy --serve",
-    "test": "npx http-server public -p 8080",
-    "dev": "concurrently --kill-others-on-fail --raw -n CSS,JS,SERVE -c yellow,cyan,magenta \"npm:css:watch\" \"npm:js:watch\" \"npm:serve\"",
-    "build": "npm run clean && npm run css && npm run js && cross-env ELEVENTY_ENV=production eleventy",
+    "dev": "cross-env ELEVENTY_ENV=development eleventy --serve",
+    "build": "npm run clean && cross-env ELEVENTY_ENV=production eleventy",
+    "test": "cross-env ELEVENTY_ENV=production eleventy --serve --input=public",
     "deploy": "npm run build && wrangler pages deploy public --project-name=rannday"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
-    "concurrently": "^9.2.0",
     "cross-env": "^7.0.3",
     "del-cli": "^6.0.0",
     "esbuild": "^0.25.8",
     "gray-matter": "^4.0.3",
     "html-minifier-next": "^1.1.4",
-    "http-server": "^14.1.1",
     "lucide-static": "^0.525.0",
     "wrangler": "^4.25.0"
   },

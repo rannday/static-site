@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { minify } from 'html-minifier-next';
 import matter from 'gray-matter';
+import { buildJS, buildCSS } from './scripts/eleventy-hooks.js';
 
 const ExternalLink = `<svg class="lucide icon" aria-hidden="true"><use href="#icon-external-link" /></svg>`;
 
@@ -10,6 +11,23 @@ export default function(eleventyConfig) {
 
   eleventyConfig.addPairedShortcode("ext_link", function(content, href) {
     return `<a href="${href}" target="_blank" rel="noopener noreferrer">${content}${ExternalLink}</a>`;
+  });
+
+  eleventyConfig.setServerOptions({
+    watch: [
+      "src/css/**/*.css",
+      "src/js/**/*.js"
+    ]
+  });
+
+  eleventyConfig.on("eleventy.before", async () => {
+    await buildCSS(false);
+    await buildJS(false);
+  });
+
+  eleventyConfig.on("eleventy.beforeWatch", async () => {
+    await buildCSS(true);
+    await buildJS(true);
   });
   
   eleventyConfig.setBrowserSyncConfig({
