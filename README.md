@@ -17,3 +17,6 @@ Cloudflare pages site
 - https://realfavicongenerator.net/  
 - https://highlightjs.org/ 
 - https://lucide.dev/
+
+## Searching
+- http://elasticlunr.com/
