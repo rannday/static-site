@@ -33,7 +33,6 @@
     "esbuild": "^0.25.8",
     "html-minifier-next": "^1.1.4",
     "lucide-static": "^0.525.0",
-    "the-new-css-reset": "^1.11.3",
     "wrangler": "^4.25.0"
   },
   "dependencies": {

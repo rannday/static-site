@@ -7,11 +7,6 @@ const ExternalLink = `<svg class="lucide icon" aria-hidden="true"><use href="#ic
 export default function(eleventyConfig) {
   const isProduction = process.env.ELEVENTY_ENV === "production";
 
-  eleventyConfig.addShortcode("resetCSS", () => {
-    const cssPath = path.resolve("node_modules/the-new-css-reset/css/reset.css");
-    return `<style>\n${fs.readFileSync(cssPath, "utf8")}\n</style>`;
-  });
-
   eleventyConfig.addPairedShortcode("ext_link", function(content, href) {
     return `<a href="${href}" target="_blank" rel="noopener noreferrer">${content}${ExternalLink}</a>`;
   });
