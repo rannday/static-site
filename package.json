@@ -15,7 +15,8 @@
     "dev": "cross-env ELEVENTY_ENV=development eleventy --serve",
     "build": "npm run clean && cross-env ELEVENTY_ENV=production eleventy",
     "preview": "cross-env ELEVENTY_ENV=production eleventy --serve --input=public",
-    "deploy": "npm run build && wrangler pages deploy public --project-name=rannday"
+    "deploy": "npm run build && wrangler pages deploy public --project-name=rannday",
+    "update": "npx npm-check-updates -u && npm install"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
@@ -25,7 +26,7 @@
     "gray-matter": "^4.0.3",
     "html-minifier-next": "^6.1.1",
     "lucide-static": "^1.8.0",
-    "wrangler": "^4.81.0"
+    "wrangler": "^4.81.1"
   },
   "dependencies": {
     "highlight.js": "^11.11.1",

@@ -1,6 +1,20 @@
 # static-site
 Cloudflare pages site
 
+## Node
+```bash
+winget install OpenJS.NodeJS
+```
+```bash
+winget upgrade OpenJS.NodeJS
+```
+```bash
+npx npm-check-updates -u
+```
+```bash
+npm install
+```
+
 ## Cloudflare Workers
 - https://workers.cloudflare.com/
 ## Cloudflare Wrangler
