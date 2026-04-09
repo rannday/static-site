@@ -70,6 +70,7 @@ layout: base.html
 - Use stable, descriptive page titles because titles feed the site search index.
 - Preserve the existing URL and folder structure unless the user asks for a reorganization.
 - Keep navigation and internal links explicit and simple.
+- For external links, always use the Eleventy paired shortcode format `{% ext_link "https://example.com/" %}Label{% endext_link %}` instead of a raw `<a>` tag so the external-link icon and new-tab behavior stay consistent.
 - Do not introduce CMS-like complexity, dynamic backends, or client-heavy UI patterns.
 
 ## Editing guidance
