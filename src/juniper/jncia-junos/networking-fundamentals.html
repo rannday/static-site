@@ -1,0 +1,39 @@
+---
+title: Networking Fundamentals
+layout: base.html
+permalink: /juniper/jncia-junos/networking-fundamentals.html
+---
+
+<p>
+  This section is the baseline: know how Ethernet forwarding, IP addressing,
+  and simple route selection work before tying them back to Junos behavior.
+  For JNCIA-Junos, definitions and basic calculations matter more than edge
+  cases.
+</p>
+
+<h2>What to know</h2>
+<ul>
+  <li>A collision domain is where Ethernet devices can interfere with each other; a switch breaks collision domains per port, while a broadcast domain normally ends at a router.</li>
+  <li>Switches primarily forward frames at Layer 2 by MAC address. Routers forward packets at Layer 3 by IP prefix and do not forward broadcasts by default.</li>
+  <li>Ethernet uses MAC addressing on the local segment. ARP resolves IPv4 addresses to MAC addresses, and IPv6 uses Neighbor Discovery for the same basic purpose.</li>
+  <li>Subnet masks and prefix lengths define network and host bits. Subnetting creates smaller networks; supernetting aggregates routes into larger summaries.</li>
+  <li>IPv4 is 32-bit addressing and IPv6 is 128-bit addressing. Junos supports both, so be comfortable reading both prefix formats.</li>
+  <li>Binary conversion shows up in subnetting questions. You should be able to convert common decimal octets to binary and back.</li>
+  <li>Longest-prefix match wins during forwarding. The most specific matching route is selected over a broader route.</li>
+  <li>Class of Service (CoS) is traffic classification and treatment. At this level, understand that traffic can be marked and queued differently.</li>
+  <li>Connection-oriented protocols build and track a session. Connectionless protocols send traffic without first establishing one.</li>
+</ul>
+
+<h2>Quick checks</h2>
+<ul>
+  <li>If a packet matches both `10.0.0.0/8` and `10.1.1.0/24`, the `/24` wins.</li>
+  <li>Routers separate broadcast domains. Switches expand a LAN but do not stop Layer 2 broadcasts on their own.</li>
+  <li>ARP is for IPv4. IPv6 uses Neighbor Discovery instead of ARP.</li>
+</ul>
+
+<h3>References</h3>
+<ul>
+  <li>{% ext_link "https://www.juniper.net/us/en/training/certification/tracks/junos/jncia-junos.html" %}JNCIA-Junos exam page{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-overview/topics/concept/junos-software-routing-forwarding-table-overview.html" %}routing and forwarding tables{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/concept/firewall-filter-qfx-series-overview.html" %}CoS marking in firewall filters{% endext_link %}</li>
+</ul>

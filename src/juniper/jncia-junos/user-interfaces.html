@@ -1,0 +1,42 @@
+---
+title: User Interfaces
+layout: base.html
+permalink: /juniper/jncia-junos/user-interfaces.html
+---
+
+<p>
+  The CLI is the primary interface to know for the exam. J-Web matters at a
+  high level, but most objective coverage here is about moving around the CLI
+  and understanding the Junos commit model.
+</p>
+
+<h2>What to know</h2>
+<ul>
+  <li>Operational mode is for monitoring and troubleshooting. Configuration mode is for editing the candidate configuration.</li>
+  <li>The active configuration is what the device is currently running. The candidate configuration is the working copy you edit before `commit`.</li>
+  <li>Common CLI flow: enter `configure`, make changes, review with `show` or `show | compare`, then `commit`.</li>
+  <li>CLI help uses `?`, tab completion, and context-sensitive prompts.</li>
+  <li>Output filtering is commonly done with pipes such as `match`, `except`, `count`, or `display set`.</li>
+  <li>Rollback lets you return to previously committed configurations. `rollback 0` discards uncommitted candidate changes.</li>
+  <li>Configuration files can be viewed, compared, loaded, and saved from the CLI. Junos keeps multiple rollback files automatically.</li>
+  <li>J-Web is the browser-based Junos interface used for initial setup, basic management, and troubleshooting.</li>
+</ul>
+
+<h2>Common commands</h2>
+<ul>
+  <li>`show interfaces terse`</li>
+  <li>`show configuration`</li>
+  <li>`show | compare`</li>
+  <li>`rollback 1`</li>
+  <li>`load set`, `load merge`, `save`, `commit`</li>
+</ul>
+
+<h3>References</h3>
+<ul>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli/topics/topic-map/cli-overview.html" %}CLI overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli/topics/topic-map/cli-configuration.html" %}configuration mode overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli/topics/topic-map/junos-cli-operational-overview.html" %}operational mode overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli-reference/topics/ref/command/rollback.html" %}rollback command{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli/topics/topic-map/junos-configuration-files-overview.html" %}configuration files overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/jweb-srx25.4/jweb-srx/topics/topic-map/j-web-security-overview.html" %}J-Web overview{% endext_link %}</li>
+</ul>

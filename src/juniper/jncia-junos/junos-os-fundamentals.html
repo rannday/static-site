@@ -1,0 +1,35 @@
+---
+title: Junos OS Fundamentals
+layout: base.html
+permalink: /juniper/jncia-junos/junos-os-fundamentals.html
+---
+
+<p>
+  Junos separates control functions from packet forwarding. That separation is a
+  core exam theme because it explains how routing, management, and traffic
+  handling fit together.
+</p>
+
+<h2>What to know</h2>
+<ul>
+  <li>The Routing Engine (RE) handles the control plane: routing protocols, system management, configuration, and user access.</li>
+  <li>The Packet Forwarding Engine (PFE) handles the forwarding plane: Layer 2 switching, route lookups, and packet forwarding in hardware.</li>
+  <li>The RE builds routing tables, picks active routes, and installs the forwarding table that the PFE uses.</li>
+  <li>Transit traffic is normal user traffic being forwarded through the device. It should stay in the forwarding path and avoid unnecessary RE processing.</li>
+  <li>Exception traffic is traffic that must go to the RE, such as routing protocol packets, management traffic, or packets that need special handling.</li>
+  <li>Junos is modular, so failures in one process are less likely to take down the entire system.</li>
+</ul>
+
+<h2>Quick checks</h2>
+<ul>
+  <li>Control plane = RE.</li>
+  <li>Forwarding plane = PFE.</li>
+  <li>Active routes come from the routing table; packet forwarding uses the forwarding table.</li>
+</ul>
+
+<h3>References</h3>
+<ul>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-overview/topics/concept/junos-software-architecture.html" %}Junos OS architecture overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-overview/topics/concept/junos-software-components-and-processes.html" %}Routing Engine components and processes{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-overview/topics/concept/junos-software-routing-forwarding-table-overview.html" %}routing and forwarding tables{% endext_link %}</li>
+</ul>

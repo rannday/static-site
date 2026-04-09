@@ -68,6 +68,9 @@ layout: base.html
 - Keep information dense, accurate, and easy to scan.
 - Favor study-note structure: requirements, concepts, terminology, links, and concise explanations.
 - Use stable, descriptive page titles because titles feed the site search index.
+- Prefer flat content files such as `src/juniper/jncia-junos/configuration-basics.html` over directory pages like `src/juniper/jncia-junos/configuration-basics/index.html`, unless the user explicitly asks for directory-style URLs.
+- When a page should build to a literal `.html` URL, add an explicit front matter permalink such as `permalink: /juniper/jncia-junos/configuration-basics.html`; otherwise Eleventy may emit a pretty URL directory with `index.html`.
+- The shared `base.html` layout already renders the page title as the main heading. Do not add a duplicate in-page `<h1>` that repeats the front matter `title` unless the user explicitly asks for it.
 - Preserve the existing URL and folder structure unless the user asks for a reorganization.
 - Keep navigation and internal links explicit and simple.
 - For external links, always use the Eleventy paired shortcode format `{% ext_link "https://example.com/" %}Label{% endext_link %}` instead of a raw `<a>` tag so the external-link icon and new-tab behavior stay consistent.

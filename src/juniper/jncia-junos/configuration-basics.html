@@ -1,0 +1,42 @@
+---
+title: Configuration Basics
+layout: base.html
+permalink: /juniper/jncia-junos/configuration-basics.html
+---
+
+<p>
+  This objective is about getting a device into a usable state and protecting
+  that configuration once it exists. Focus on the commit workflow, user access,
+  and a few standard system services.
+</p>
+
+<h2>What to know</h2>
+<ul>
+  <li>Factory-default devices need basic setup before they can be managed on the network.</li>
+  <li>Initial configuration usually includes hostname, root authentication, management addressing, and a default route if needed.</li>
+  <li>User accounts define who can log in. Login classes define what those users are allowed to do.</li>
+  <li>Junos supports local authentication and centralized methods such as RADIUS and TACACS+.</li>
+  <li>Interfaces are configured under the `interfaces` hierarchy with unit numbers, families, and addresses.</li>
+  <li>Configuration groups reduce repetition by applying inherited settings to multiple places in the configuration.</li>
+  <li>Common base services include NTP for time, SNMP for monitoring, and syslog for event logging.</li>
+  <li>Archival and rescue configuration features help with recovery. A rescue configuration is a known-good checkpoint.</li>
+  <li>Tracing and logging help troubleshoot both normal behavior and failures.</li>
+</ul>
+
+<h2>Quick checks</h2>
+<ul>
+  <li>You must define the root password during initial setup before you can commit.</li>
+  <li>Login class controls permissions; user account ties a person or template to that access level.</li>
+  <li>Use rescue config for fast recovery to a known-good state.</li>
+</ul>
+
+<h3>References</h3>
+<ul>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-getting-started/topics/concept/initial-configuration-overview.html" %}initial configuration overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-getting-started/topics/concept/root-password.html" %}root password overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/user-access/topics/topic-map/junos-os-user-authentication-overview.html" %}user authentication overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-overview/cli/topics/concept/junos-software-configuration-groups-understanding.html" %}configuration groups overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli/topics/topic-map/junos-rescue-configuration.html" %}rescue configuration{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-overview/topics/concept/junos-software-tracing-logging-operations-overview.html" %}tracing and logging{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli-reference/topics/ref/statement/syslog-edit-system.html" %}system syslog{% endext_link %}</li>
+</ul>

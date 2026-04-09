@@ -1,0 +1,39 @@
+---
+title: Operational Monitoring and Maintenance
+layout: base.html
+permalink: /juniper/jncia-junos/operational-monitoring-and-maintenance.html
+---
+
+<p>
+  This section is mostly operational-mode awareness: know which commands you
+  would use, what they tell you, and the basic maintenance workflow for software
+  and recovery tasks.
+</p>
+
+<h2>What to know</h2>
+<ul>
+  <li>`show` commands display status, routing, interfaces, alarms, and configuration details.</li>
+  <li>`monitor` commands give live updates, such as real-time interface counters or traffic views.</li>
+  <li>Interface monitoring should include traffic rates, packet counters, drops, and physical errors.</li>
+  <li>Basic network tools include `ping`, `traceroute`, `telnet`, and `ssh` for reachability and path testing.</li>
+  <li>Upgrades require planning: back up the configuration, validate the package, install it, and reboot into the new version.</li>
+  <li>Power operations use operational commands, not abrupt power removal. Know normal shutdown and reboot concepts.</li>
+  <li>Root password recovery is a standard break-glass procedure and is part of basic platform administration.</li>
+</ul>
+
+<h2>Common commands</h2>
+<ul>
+  <li>`show interfaces terse`</li>
+  <li>`show interfaces extensive`</li>
+  <li>`show system alarms`</li>
+  <li>`monitor interface traffic`</li>
+  <li>`ping`, `traceroute`, `ssh`, `telnet`</li>
+</ul>
+
+<h3>References</h3>
+<ul>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli/topics/topic-map/junos-cli-operational-overview.html" %}operational mode overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli-reference/topics/ref/command/monitor-interface.html" %}monitor interface{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/srx-upgrade/topics/concept/upgrade-reasons.html" %}Junos OS installation and upgrade overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-getting-started/topics/concept/root-password.html" %}root password overview{% endext_link %}</li>
+</ul>

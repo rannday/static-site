@@ -1,0 +1,38 @@
+---
+title: Routing Policy and Firewall Filters
+layout: base.html
+permalink: /juniper/jncia-junos/routing-policy-and-firewall-filters.html
+---
+
+<p>
+  This objective mixes route control and packet filtering. The main exam goal is
+  to understand the structure: terms, matches, actions, and where policies or
+  filters take effect.
+</p>
+
+<h2>What to know</h2>
+<ul>
+  <li>Routing policy controls which routes are accepted into a table or advertised out of it.</li>
+  <li>Import policy affects routes being brought into a routing table. Export policy affects routes being advertised by a protocol.</li>
+  <li>By default, Junos routing protocols use built-in behavior until you apply explicit policy.</li>
+  <li>Policies are built from terms. Terms contain match criteria and actions.</li>
+  <li>Firewall filters are stateless packet filters. They match packet fields and then take actions such as accept, discard, reject, count, or classify.</li>
+  <li>Filter terms are evaluated in order, top to bottom, until a match takes effect.</li>
+  <li>Filters can protect transit traffic or traffic destined for the Routing Engine, especially when applied to `lo0`.</li>
+  <li>Unicast RPF is an anti-spoofing check that verifies whether the source is reachable through the expected return path.</li>
+</ul>
+
+<h2>Quick checks</h2>
+<ul>
+  <li>Policy changes routes. Firewall filters change packet handling.</li>
+  <li>Import = into table. Export = out to neighbors.</li>
+  <li>Order matters for both policy terms and filter terms.</li>
+</ul>
+
+<h3>References</h3>
+<ul>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-overview/topics/concept/routing-policy-overview.html" %}routing policy overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/concept/firewall-filter-overview.html" %}stateless firewall filter overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/concept/firewall-filter-stateless-overview.html" %}firewall filters overview{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/concept/firewall-filter-option-filter-based-forwarding-overview.html" %}filters and routing instances{% endext_link %}</li>
+</ul>

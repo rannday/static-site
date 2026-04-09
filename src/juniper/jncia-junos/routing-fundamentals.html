@@ -1,0 +1,37 @@
+---
+title: Routing Fundamentals
+layout: base.html
+permalink: /juniper/jncia-junos/routing-fundamentals.html
+---
+
+<p>
+  Routing questions at this level are about basic forwarding logic, route
+  selection, and where different route types live in Junos. Keep the routing
+  table versus forwarding table distinction clear.
+</p>
+
+<h2>What to know</h2>
+<ul>
+  <li>The routing table stores learned and configured routes. The forwarding table contains the active routes used to forward packets.</li>
+  <li>Traffic forwarding is based on destination lookup and longest-prefix match.</li>
+  <li>Junos maintains default tables such as `inet.0` for IPv4 unicast routes, and additional tables can exist for other families or routing instances.</li>
+  <li>Route preference is Junos administrative preference. Lower preference is better.</li>
+  <li>Static routes are manually configured and are often used for simple reachability, default routes, or backup paths.</li>
+  <li>Routing instances separate interfaces, routing tables, and protocol state. They are used for traffic separation and virtualization.</li>
+  <li>Dynamic routing protocols automatically learn and exchange routes. Their main advantage is adaptability and scalability compared with static-only designs.</li>
+</ul>
+
+<h2>Quick checks</h2>
+<ul>
+  <li>Routing table decides the best route; forwarding table is what the PFE actually uses.</li>
+  <li>Lower route preference wins.</li>
+  <li>`inet.0` is the normal default IPv4 unicast table on Junos.</li>
+</ul>
+
+<h3>References</h3>
+<ul>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/junos-overview/topics/concept/junos-software-routing-forwarding-table-overview.html" %}routing and forwarding tables{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli-reference/topics/ref/statement/preference-edit-routing-options.html" %}route preference{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/cli-reference/topics/ref/statement/static-edit-routing-options.html" %}static routes{% endext_link %}</li>
+  <li>{% ext_link "https://www.juniper.net/documentation/us/en/software/junos/routing-overview/topics/concept/routing-instances-overview.html" %}routing instances overview{% endext_link %}</li>
+</ul>
