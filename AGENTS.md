@@ -4,10 +4,7 @@ This file gives coding agents working rules for `static-site`.
 
 ## Scope and hard limits
 
-- Only read or edit files inside this repository.
-- Never edit files outside this project, even if a tool makes that possible.
-- Git inspection commands are allowed when useful, such as `git status`, `git diff`, and `git log`.
-- Never use Git to modify the repository state. Do not run commands such as `git pull`, `git push`, `git commit`, `git checkout`, `git merge`, `git rebase`, `git reset`, `git stash`, or branch/tag creation or deletion commands.
+- Only edit files inside this repository.
 - Do not add new npm/node packages unless the user explicitly asks for that.
 - Keep the project simple. This is a personal site, not a general-purpose product platform.
 
