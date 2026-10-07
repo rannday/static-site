@@ -98,7 +98,7 @@ export default function(eleventyConfig) {
           removeEmptyAttributes: true,
           useShortDoctype: true,
           sortAttributes: true,
-          sortClassName: true,
+          sortClassNames: true,
           minifyCSS: true,
           minifyJS: true
         });
